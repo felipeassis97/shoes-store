@@ -10,7 +10,7 @@ import Core
 
 struct HomeView: View {
     
-    @StateObject var homeViewModel = HomeViewModel()
+    //@StateObject var homeViewModel = HomeViewModel()
     @State var name = ""
     let cache = getCacheManger()
     let keychain = getSecureStorageManager()
@@ -18,31 +18,19 @@ struct HomeView: View {
     var body: some View {
         
         VStack(alignment: .leading) {
-            
             Text("Olá \(keychain.get(for: "name") ?? "")")
                 .padding()
-            
-            List(1..<5) { row in
-                if let banner = homeViewModel.banners {
-                    PromotionalBannerItemView(banner: banner)
-                        .padding(.top, 16)
-                }
-            }
-            .refreshable {
-                Task {
-                    try await homeViewModel.getBanners()
-                }
-            }
-        }
+            BannerTabView()
+            Spacer()
 
+        }
+        .padding()
         .onAppear{
             Task {
-               try await homeViewModel.getBanners()
                 cache.save(key: "name", value: "Felipe")
                 keychain.save(key: "name", value: "Aline")
             }
         }
-        .padding()
     }
 }
 

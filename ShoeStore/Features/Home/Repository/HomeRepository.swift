@@ -15,9 +15,9 @@ struct HomeRepository: IHomeRepository {
         self.client = getClient()
     }
     
-    func getHome() async throws -> Result<Banner?, RequestError> {
+    func getHome() async throws -> Result<[Banner]?, RequestError> {
         let url = "https://private-4c27cb-shoes.apiary-mock.com/banners"
-        let response = try await client.get(path: url, header: nil, responseModel: Banner.self)
+        let response = try await client.get(path: url, header: nil, responseModel: [Banner].self)
         return response
     }
 }
@@ -25,7 +25,7 @@ struct HomeRepository: IHomeRepository {
 
 struct Banner: Identifiable, Decodable {
     let id: String
-    let banner: String
+    let image: String
 }
 
 

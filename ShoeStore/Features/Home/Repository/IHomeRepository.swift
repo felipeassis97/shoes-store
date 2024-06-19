@@ -9,5 +9,5 @@ import Foundation
 import Core
 
 protocol IHomeRepository {
-    func getHome() async throws -> Result<Banner?, RequestError>
+    func getHome() async throws -> Result<[Banner]?, RequestError>
 }
