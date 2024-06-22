@@ -9,20 +9,34 @@ import SwiftUI
 import Core
 
 struct HomeView: View {
-    
-    //@StateObject var homeViewModel = HomeViewModel()
-    @State var name = ""
+    let homeViewModel = HomeViewModel.instance
     let cache = getCacheManger()
     let keychain = getSecureStorageManager()
-
+    @State var name = ""
+    
     var body: some View {
         
+        
         VStack(alignment: .leading) {
-            Text("Olá \(keychain.get(for: "name") ?? "")")
-                .padding()
+            
+            Image(.brand)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 120)
+            
+//            Text("Olá \(keychain.get(for: "name") ?? "")")
+//                .padding()
+            
             BannerTabView()
+                .padding(.bottom, 16)
+                .padding(.top, 16)
+            
+            FiltersListView()
+                .padding(.bottom, 16)
+            
+            StoresListView()
+            
             Spacer()
-
         }
         .padding()
         .onAppear{
@@ -34,6 +48,8 @@ struct HomeView: View {
     }
 }
 
+
 #Preview {
     HomeView()
 }
+

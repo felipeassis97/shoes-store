@@ -10,4 +10,6 @@ import Core
 
 protocol IHomeRepository {
     func getHome() async throws -> Result<[Banner]?, RequestError>
+    func getFilters() async throws -> Result<[Filter]?, RequestError>
+    func getStores() async throws -> Result<[Store]?, RequestError>
 }

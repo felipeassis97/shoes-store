@@ -23,18 +23,18 @@ struct ContentView: View {
                 },
                       icon: { Image(systemName: "house") }
                 )}
-            
+            //
             NavigationStack {
-                HomeView()
+                ProductsView()
             }
             .tabItem {
                 Label(title: {
-                    Text("Favorites")
+                    Text("Products")
                 }, icon: {
-                    Image(systemName: "heart")
+                    Image(systemName: "magnifyingglass")
                 }
                 )}
-            
+            //
             NavigationStack {
                 HomeView()
             }

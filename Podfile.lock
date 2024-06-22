@@ -1,22 +1,29 @@
 PODS:
-  - Core (1.3.0)
+  - Core (1.5.2):
+    - Kingfisher (~> 7.12.0)
+  - Kingfisher (7.12.0)
 
 DEPENDENCIES:
-  - Core (from `https://github.com/felipeassis97/Core.git`, tag `1.3.0`)
+  - Core (from `https://github.com/felipeassis97/Core.git`, tag `1.5.2`)
+
+SPEC REPOS:
+  trunk:
+    - Kingfisher
 
 EXTERNAL SOURCES:
   Core:
     :git: https://github.com/felipeassis97/Core.git
-    :tag: 1.3.0
+    :tag: 1.5.2
 
 CHECKOUT OPTIONS:
   Core:
     :git: https://github.com/felipeassis97/Core.git
-    :tag: 1.3.0
+    :tag: 1.5.2
 
 SPEC CHECKSUMS:
-  Core: a34da62d8ba8ef156d3ea762d9ade4a6fb2fe1e3
+  Core: baa31095c3c7d337c32cd7cdb7a3578d46875428
+  Kingfisher: 53a10ea35051a436b5fb626ca2dd8f3144d755e9
 
-PODFILE CHECKSUM: d7028ce68b66c50753dd78287b92c75ca717847c
+PODFILE CHECKSUM: d34c1be9d6d08706f0960fbbb58cc474cbe209a3
 
 COCOAPODS: 1.15.2

@@ -10,7 +10,7 @@ import Core
 
 struct BannerItemView: View {
     let banner: Banner
-    @StateObject private var imageLoader = DownloadImage()
+    @StateObject private var imageLoader = ImageDownloader()
     
     var body: some View {
         ZStack {
@@ -30,8 +30,8 @@ struct BannerItemView: View {
         .onAppear {
             Task {
                 imageLoader.download(from: banner.image)
+                
             }
         }
     }
 }
-
