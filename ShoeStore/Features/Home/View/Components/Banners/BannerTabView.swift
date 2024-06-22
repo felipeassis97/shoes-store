@@ -9,14 +9,14 @@ import SwiftUI
 
 struct BannerTabView: View {
     @State private var currentIndex = 1
-    @StateObject private var viewModel = HomeViewModel()
+     var homeViewModel = HomeViewModel.instance
     let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack(){
             TabView(selection:$currentIndex){
-                ForEach(0..<viewModel.banners.count,id: \.self) { imageIndex in
-                    BannerItemView(banner: viewModel.banners[imageIndex])
+                ForEach(0..<homeViewModel.banners.count,id: \.self) { imageIndex in
+                    BannerItemView(banner: homeViewModel.banners[imageIndex])
                         .tag(imageIndex)
                 }
             }
@@ -27,13 +27,13 @@ struct BannerTabView: View {
         }
         .onAppear {
             Task {
-                try await viewModel.getBanners()
+                try await homeViewModel.getBanners()
             }
         }
         .onReceive(timer){_ in
-            if viewModel.banners.count > 0 {
+            if homeViewModel.banners.count > 0 {
                 withAnimation {
-                    currentIndex = (currentIndex + 1) % viewModel.banners.count
+                    currentIndex = (currentIndex + 1) % homeViewModel.banners.count
                 }
             }
         }

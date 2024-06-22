@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BannerErrorView: View {
-    @StateObject private var homeViewModel = HomeViewModel()
+     var homeViewModel = HomeViewModel.instance
 
     var body: some View {
         Rectangle()
@@ -36,7 +36,6 @@ struct BannerErrorView: View {
                                 .bold()
                         })
                     }
-          
                 })
     }
 }
